@@ -1,7 +1,6 @@
 package com.example.lovecalculate_month5
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.lovecalculate_month5.databinding.FragmentFirstBinding
 import retrofit2.Call
 import retrofit2.Response
+import java.io.IOException
 
 class FirstFragment : Fragment() {
 
@@ -28,12 +28,16 @@ class FirstFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initClicker()
+        clearTextView()
     }
+
 
     private fun initClicker() {
         with(binding) {
             btnCalculate.setOnClickListener {
                 if (firstEt.text.isNotEmpty() && secondEt.text.isNotEmpty()) {
+                    //Если оба поля содержат значения, создается экземпляр RetrofitService() и
+                    // вызывается метод getPercentage() для выполнения сетевого запроса.
                     RetrofitService().api.getPercentage(
                         first = firstEt.text.toString(),
                         second = secondEt.text.toString()
@@ -43,7 +47,6 @@ class FirstFragment : Fragment() {
                             response: Response<LoveModel>
                         ) {
                             if (response.isSuccessful) {
-                                Log.d("ololo", "onResponse: ${response.body()}")
                                 findNavController().navigate(
                                     R.id.resultFragment,
                                     bundleOf("result" to response.body())
@@ -52,13 +55,32 @@ class FirstFragment : Fragment() {
                         }
 
                         override fun onFailure(call: Call<LoveModel>, t: Throwable) {
-                            Log.d("ololo", "onFailure: ${t.message}")
+                            if (t is IOException) {
+                                Toast.makeText(
+                                    context,
+                                    "Check Internet Connection",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            } else {
+                                Toast.makeText(context, "An error occurred", Toast.LENGTH_SHORT)
+                                    .show()
+                            }
+
                         }
                     })
-                }else{
+                } else {
                     Toast.makeText(context, "Please Write Names", Toast.LENGTH_SHORT).show()
                 }
+
             }
+        }
+    }
+
+    private fun clearTextView() {
+        val clearEditText = arguments?.getBoolean("clearEditText") ?: false
+        if (clearEditText) {
+            binding.firstEt.text.clear()
+            binding.secondEt.text.clear()
         }
     }
 }

@@ -22,6 +22,7 @@ class ResultFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         with(binding) {
             val result = arguments?.getSerializable("result") as LoveModel
             etYou.text = result.firstName
@@ -29,8 +30,12 @@ class ResultFragment : Fragment() {
             tvPercentage.text = result.percentage + "%"
             tvResult.text = result.result
 
+                //переход назад и передача сигнала об очистке edit text через bundle
             btnTryAgain.setOnClickListener {
-                findNavController().navigateUp()
+                val bundle = Bundle().apply {
+                    putBoolean("clearEditText", true)
+                }
+                findNavController().navigate(R.id.firstFragment,bundle)
             }
         }
     }
