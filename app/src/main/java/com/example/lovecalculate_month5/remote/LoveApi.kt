@@ -1,4 +1,4 @@
-package com.example.lovecalculate_month5
+package com.example.lovecalculate_month5.remote
 
 import retrofit2.Call
 import retrofit2.http.GET
@@ -6,7 +6,7 @@ import retrofit2.http.Header
 import retrofit2.http.Query
 
 interface LoveApi {
-
+    //get post delete основыные запросы
     @GET("getPercentage")
     fun getPercentage(
         @Query("fname") first: String,
@@ -14,4 +14,5 @@ interface LoveApi {
         @Header("X-RapidAPI-Key") key: String = "7830d9ed18msh98e62accda3d0b4p1d3d51jsncdd805bb7c2a",
         @Header("X-RapidAPI-Host") host: String = "love-calculator.p.rapidapi.com"
     ): Call<LoveModel>
+
 }

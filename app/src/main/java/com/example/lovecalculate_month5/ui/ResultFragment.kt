@@ -1,4 +1,4 @@
-package com.example.lovecalculate_month5
+package com.example.lovecalculate_month5.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,7 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.example.lovecalculate_month5.R
 import com.example.lovecalculate_month5.databinding.FragmentResultBinding
+import com.example.lovecalculate_month5.remote.LoveModel
 
 class ResultFragment : Fragment() {
 
@@ -30,12 +32,12 @@ class ResultFragment : Fragment() {
             tvPercentage.text = result.percentage + "%"
             tvResult.text = result.result
 
-                //переход назад и передача сигнала об очистке edit text через bundle
+            //переход назад и передача сигнала об очистке edit text через bundle
             btnTryAgain.setOnClickListener {
                 val bundle = Bundle().apply {
                     putBoolean("clearEditText", true)
                 }
-                findNavController().navigate(R.id.firstFragment,bundle)
+                findNavController().navigateUp()
             }
         }
     }
