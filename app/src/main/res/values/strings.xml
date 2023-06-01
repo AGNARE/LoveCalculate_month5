@@ -13,4 +13,7 @@
     <string name="_100">100%</string>
     <string name="your_score">Your Score</string>
     <string name="todo">TODO</string>
+    <string name="get_started">Get Started</string>
+    <string name="exampleText">exampleText</string>
+    <string name="description">description</string>
 </resources>

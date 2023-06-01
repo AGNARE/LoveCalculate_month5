@@ -12,17 +12,24 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.lovecalculate_month5.LoveViewModel
 import com.example.lovecalculate_month5.R
+import com.example.lovecalculate_month5.Utils
 import com.example.lovecalculate_month5.databinding.FragmentFirstBinding
 import com.example.lovecalculate_month5.remote.LoveModel
 import com.example.lovecalculate_month5.remote.RetrofitService
+import dagger.hilt.android.AndroidEntryPoint
 import retrofit2.Call
 import retrofit2.Response
 import java.io.IOException
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class FirstFragment : Fragment() {
 
     private lateinit var binding: FragmentFirstBinding
     private val viewModel: LoveViewModel by viewModels()
+
+    @Inject
+    lateinit var utils: Utils
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
