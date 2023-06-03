@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import com.example.lovecalculate_month5.R
 import com.example.lovecalculate_month5.databinding.FragmentResultBinding
 import com.example.lovecalculate_month5.remote.LoveModel
 

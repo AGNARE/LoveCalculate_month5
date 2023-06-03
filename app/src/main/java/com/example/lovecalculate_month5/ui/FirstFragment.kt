@@ -6,20 +6,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.example.lovecalculate_month5.App
 import com.example.lovecalculate_month5.LoveViewModel
 import com.example.lovecalculate_month5.R
 import com.example.lovecalculate_month5.Utils
 import com.example.lovecalculate_month5.databinding.FragmentFirstBinding
-import com.example.lovecalculate_month5.remote.LoveModel
-import com.example.lovecalculate_month5.remote.RetrofitService
 import dagger.hilt.android.AndroidEntryPoint
-import retrofit2.Call
-import retrofit2.Response
-import java.io.IOException
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -42,6 +37,13 @@ class FirstFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initClicker()
+        clickHistory()
+    }
+
+    private fun clickHistory() {
+        binding.btnHistory.setOnClickListener {
+            findNavController().navigate(R.id.historyFragment)
+        }
     }
 
 
@@ -56,6 +58,7 @@ class FirstFragment : Fragment() {
                                 R.id.resultFragment,
                                 bundleOf("result" to loveModel)
                             )
+                            App.appDatabase.getDao().insert(loveModel)
                         }
                 }
             }

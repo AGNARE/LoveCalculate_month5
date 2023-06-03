@@ -13,6 +13,8 @@ class LoveViewModel @Inject constructor(private val repository: Repository) : Vi
     fun getLiveLove(firstName: String, secondName: String): LiveData<LoveModel> {
         return repository.getLove(firstName, secondName)
     }
+
+
 }
 // ViewModel (Представитель)
 // Связующее звено между моделью и представлением.

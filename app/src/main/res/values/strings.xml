@@ -16,4 +16,6 @@
     <string name="get_started">Get Started</string>
     <string name="exampleText">exampleText</string>
     <string name="description">description</string>
+    <string name="history">History</string>
+    <string name="ravno">=</string>
 </resources>
