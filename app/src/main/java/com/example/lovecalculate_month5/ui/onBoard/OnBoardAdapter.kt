@@ -1,5 +1,6 @@
 package com.example.lovecalculate_month5.ui.onBoard
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.view.isVisible
@@ -59,10 +60,9 @@ class OnBoardAdapter(private val onClick: () -> Unit) :
         ViewHolder(binding.root) {
         fun onBind(onBoardModel: OnBoardModel) {
             binding.btnGetStarted.setOnClickListener {
-                onClick
+                onClick()
             }
             binding.btnGetStarted.isVisible = adapterPosition == data.lastIndex
-
             binding.tvTitle.text = onBoardModel.title
             binding.tvDescription.text = onBoardModel.desc
             onBoardModel.img?.let { binding.ivGetStarted.setImageResource(it) }
