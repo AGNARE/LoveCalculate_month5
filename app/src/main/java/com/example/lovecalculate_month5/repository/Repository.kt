@@ -2,6 +2,7 @@ package com.example.lovecalculate_month5.repository
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
+import com.example.lovecalculate_month5.data.local.LoveDao
 import com.example.lovecalculate_month5.remote.LoveApi
 import com.example.lovecalculate_month5.remote.LoveModel
 import retrofit2.Call
@@ -9,7 +10,8 @@ import retrofit2.Callback
 import retrofit2.Response
 import javax.inject.Inject
 
-class Repository @Inject constructor(private val api: LoveApi){
+class Repository @Inject constructor(private val api: LoveApi, private val loveDao: LoveDao){
+
 
     fun getLove(firstName: String, secondName: String): MutableLiveData<LoveModel>{
         val liveLoveData = MutableLiveData<LoveModel>()

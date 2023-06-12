@@ -8,12 +8,17 @@ import android.view.ViewGroup
 import android.widget.Adapter
 import com.example.lovecalculate_month5.App
 import com.example.lovecalculate_month5.LoveViewModel
+import com.example.lovecalculate_month5.data.local.AppDataBase
+import com.example.lovecalculate_month5.data.local.LoveDao
 import com.example.lovecalculate_month5.databinding.FragmentHistoryBinding
 import com.example.lovecalculate_month5.remote.LoveModel
+import javax.inject.Inject
 
 class HistoryFragment : Fragment() {
 
     private lateinit var binding: FragmentHistoryBinding
+    @Inject
+    lateinit var dataBase: LoveDao
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,7 +30,7 @@ class HistoryFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val list = App.appDatabase.getDao().getAllSort()
+        val list = dataBase.getAllSort()
         var data = ""
 
         list.forEach {

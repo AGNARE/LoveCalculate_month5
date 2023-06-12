@@ -1,6 +1,5 @@
 package com.example.lovecalculate_month5.ui.onBoard
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.view.isVisible
@@ -17,24 +16,24 @@ class OnBoardAdapter(private val onClick: () -> Unit) :
             "Have a good time!",
             "You should take the time to help those \n" +
                     " who who need you",
-            R.drawable.img_first
+            R.raw.love_anim_1_json
         ),
         OnBoardModel(
             "Cherishing love",
             "It is now no longer possible for\nyou to cherish love",
-            R.drawable.img_second
+            R.raw.love_anim_2_json
         ),
         OnBoardModel(
             "Have a breakup?",
             "We have made the correction for you\n" +
                     " don't worry\n" +
                     " Maybe someone is waiting for you!",
-            R.drawable.img_third
+            R.raw.love_anim_3_json
         ),
         OnBoardModel(
             "It's Funs and Many more",
             " ",
-            R.drawable.img
+            R.raw.love_anim_4_json
         )
     )
 

@@ -1,10 +1,12 @@
 package com.example.lovecalculate_month5
 
 import android.app.Application
+import androidx.room.Insert
 import androidx.room.Room
 import androidx.room.util.appendPlaceholders
 import com.example.lovecalculate_month5.data.local.AppDataBase
 import dagger.hilt.android.HiltAndroidApp
+import javax.inject.Inject
 
 @HiltAndroidApp
 class App : Application() {
@@ -19,5 +21,4 @@ class App : Application() {
             Room.databaseBuilder(applicationContext, AppDataBase::class.java, "love_file")
                 .allowMainThreadQueries().build()
     }
-
 }
